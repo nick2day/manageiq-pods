@@ -30,8 +30,8 @@ LABEL name="manageiq" \
 
 
 ## Install EPEL repo, yum necessary packages for the build without docs, clean all caches
-RUN yum -4 -y install centos-release-scl-rh && \
-    yum -4 -y install --setopt=tsflags=nodocs \
+RUN yum -y install centos-release-scl-rh && \
+    yum -y install --setopt=tsflags=nodocs \
                    chrony                  \
                    cmake                   \
                    cronie                  \
