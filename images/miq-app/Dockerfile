@@ -27,6 +27,12 @@ LABEL name="manageiq" \
       io.openshift.expose-services="443:https" \
       io.openshift.tags="ManageIQ,miq,manageiq"
 
+
+# Attempt to Disable ipv6
+RUN echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6 \
+    echo 1 > /proc/sys/net/ipv6/conf/default/disable_ipv6 \
+    echo "ip_resolve=4" >> /etc/yum.conf
+
 ## Install EPEL repo, yum necessary packages for the build without docs, clean all caches
 RUN yum -y install centos-release-scl-rh && \
     yum -y install --setopt=tsflags=nodocs \
